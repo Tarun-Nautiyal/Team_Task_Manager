@@ -27,10 +27,8 @@ const startServer = async () => {
   await connectDB();
   
   // Sync Database
-  if (process.env.NODE_ENV === 'development') {
-    await sequelize.sync({ alter: true });
-    console.log('Database synced.');
-  }
+  await sequelize.sync({ alter: true });
+  console.log('Database synced.');
 
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

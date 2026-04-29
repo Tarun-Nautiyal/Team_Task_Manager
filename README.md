@@ -109,8 +109,8 @@ Team Task Manager/
 
 | Item        | Link |
 | ----------- | ---- |
-| Live App    |      |
-| GitHub Repo |      |
+| Live App    |  https://considerate-optimism-production-cbda.up.railway.app/login    |
+| GitHub Repo |https://github.com/govindheda070504/Team_Task_Manager.git   |
 | Demo Video  |      |
 
 ---

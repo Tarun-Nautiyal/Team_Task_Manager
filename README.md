@@ -29,7 +29,7 @@ A full-stack, premium team collaboration and task management application built w
 1. Clone the repository:
    ```bash
    git clone <repo-url>
-   cd Ethara_Ai
+   cd Team_Task_Manager
    ```
 
 2. Install all dependencies:
@@ -54,6 +54,4 @@ A full-stack, premium team collaboration and task management application built w
 
 This app is configured for **Railway**. Simply connect your GitHub repository and add the environment variables to the Railway dashboard.
 
-## 📄 License
-
-MIT
+Live App: https://radiant-tenderness-production-f64f.up.railway.app/

@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const { connectDB, sequelize } = require('./config/db');
 const authRoutes = require('./routes/auth');
 const projectRoutes = require('./routes/projects');
@@ -8,6 +9,7 @@ const taskRoutes = require('./routes/tasks');
 require('dotenv').config();
 
 const app = express();
+const isProduction = process.env.NODE_ENV === 'production';
 
 // Middleware
 app.use(cors());
@@ -20,6 +22,16 @@ app.use('/api/tasks', taskRoutes);
 
 // Health Check
 app.get('/health', (req, res) => res.send('API is running...'));
+
+// Serve React frontend in production
+if (isProduction) {
+  const clientBuildPath = path.join(__dirname, '../client/dist');
+  app.use(express.static(clientBuildPath));
+  // Handle client-side routing — send all non-API requests to index.html
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(clientBuildPath, 'index.html'));
+  });
+}
 
 const PORT = process.env.PORT || 5001;
 

@@ -1,11 +1,23 @@
 const { Sequelize } = require('sequelize');
 require('dotenv').config();
 
-const sequelize = new Sequelize({
-  dialect: 'sqlite',
-  storage: './database.sqlite',
-  logging: false,
-});
+// If DATABASE_URL is set (Railway PostgreSQL), use it. Otherwise fall back to SQLite for local dev.
+const sequelize = process.env.DATABASE_URL
+  ? new Sequelize(process.env.DATABASE_URL, {
+      dialect: 'postgres',
+      dialectOptions: {
+        ssl: {
+          require: true,
+          rejectUnauthorized: false, // Required for Railway's PostgreSQL
+        },
+      },
+      logging: false,
+    })
+  : new Sequelize({
+      dialect: 'sqlite',
+      storage: './database.sqlite',
+      logging: false,
+    });
 
 const connectDB = async () => {
   try {

@@ -1,122 +1,94 @@
-# Team Task Manager – Full Stack Web Application
+# Team Task Manager
 
-## Overview
-
-This project is a full-stack Team Task Management web application designed to help teams collaborate, assign tasks, and track progress efficiently. It allows multiple users to work together within projects, manage responsibilities, and stay organized.
-
-The application is inspired by tools like Trello and Asana but focuses on simplicity and core collaboration features.
-
----
+A full-stack team collaboration and task management application built with React and Node.js.
 
 ## Features
 
-### Authentication
-
-* User signup with name, email, and password
-* Secure login using JWT-based authentication
-* Protected routes for authorized access
-
-### Project Management
-
-* Create new projects
-* Project creator becomes Admin
-* Admin can add/remove members
-* Users can view joined projects
-
-### Task Management
-
-* Create tasks with title, description, due date, and priority
-* Assign tasks to users
-* Update task status (To Do, In Progress, Done)
-
-### Dashboard
-
-* Total tasks overview
-* Tasks grouped by status
-* Tasks per user
-* Overdue task tracking
-
-### Role-Based Access
-
-| Role   | Permissions                                             |
-| ------ | ------------------------------------------------------- |
-| Admin  | Manage members, create/update/delete tasks, full access |
-| Member | View projects, update assigned tasks only               |
-
----
+- 🔐 **Authentication** — Secure JWT-based signup & login
+- 📋 **Project Management** — Create and manage multiple projects
+- ✅ **Task Tracking** — Kanban-style board with To Do, In Progress, and Done columns
+- 👥 **Team Collaboration** — Invite members and assign tasks
+- 🔒 **Role-Based Access** — Admin and Member roles per project
+- 📊 **Dashboard** — Overview of all projects and task stats
 
 ## Tech Stack
 
-| Layer    | Technology       |
-| -------- | ---------------- |
-| Frontend | React            |
-| Backend  | Node.js, Express |
-| Database | MySQL            |
-| Auth     | JWT              |
+**Frontend**
+- React (Vite)
+- React Router v6
+- Framer Motion
+- Lucide Icons
+- Axios
 
----
+**Backend**
+- Node.js + Express
+- Sequelize ORM
+- SQLite (development)
+- JWT Authentication
+- bcrypt password hashing
+
+## Getting Started
+
+### Prerequisites
+- Node.js v18+
+- npm
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone https://github.com/Tarun-Nautiyal/Team_Task_Manager.git
+cd Team_Task_Manager
+```
+
+2. Install all dependencies
+```bash
+npm run install-all
+```
+
+3. Set up environment variables
+
+Create `client/.env`:
+```
+VITE_API_URL=http://localhost:5001/api
+```
+
+Create `server/.env`:
+```
+PORT=5001
+JWT_SECRET=your_jwt_secret_here
+```
+
+4. Run the development server
+```bash
+npm run dev
+```
+
+The app will be available at:
+- **Frontend**: http://localhost:5173
+- **Backend**: http://localhost:5001
 
 ## Project Structure
 
 ```
-Team Task Manager/
-├── client/
+├── client/               # React frontend
 │   ├── src/
-│   │   ├── components/       # Navbar.jsx
-│   │   ├── pages/            # Login, Signup, Dashboard, ProjectDetails
-│   │   ├── App.jsx
-│   │   ├── api.js
-│   │   └── index.css
-│   └── package.json
-│
-├── server/
-│   ├── config/               # db.js
-│   ├── controllers/          # auth, project, task controllers
-│   ├── middleware/           # auth.js
-│   ├── models/               # index.js
-│   ├── routes/               # auth, tasks, projects routes
-│   ├── index.js
-│   └── package.json
-│
-├── package.json              # Root manager
-└── README.md
+│   │   ├── components/   # Navbar, etc.
+│   │   ├── pages/        # Login, Signup, Dashboard, ProjectDetails
+│   │   └── api.js        # Axios instance
+├── server/               # Express backend
+│   ├── config/           # Database config
+│   ├── middleware/        # Auth middleware
+│   ├── models/           # Sequelize models
+│   └── routes/           # API routes
+└── package.json          # Root scripts
 ```
 
----
+## Scripts
 
-## API Overview
-
-| Module    | Endpoints                      |
-| --------- | ------------------------------ |
-| Auth      | Signup, Login                  |
-| Projects  | Create, Join, Manage Members   |
-| Tasks     | Create, Assign, Update, Delete |
-| Dashboard | Stats & Insights               |
-
----
-
-
-## Deployment (Railway)
-
-* Connect GitHub repository to Railway
-* Add environment variables
-* Deploy backend and frontend
-* Ensure API URLs are configured correctly
-
----
-
-## Submission
-
-| Item        | Link |
-| ----------- | ---- |
-| Live App    |  https://radiant-tenderness-production-f64f.up.railway.app/    |
-| GitHub Repo |https://github.com/govindheda070504/Team_Task_Manager.git   |
-| Demo Video  | https://drive.google.com/drive/folders/18V0eG9Kp7Hkho5noXwhuo3aHWouJgzex?usp=sharing     |
-
----
-
-## Notes
-
-This project demonstrates full-stack development skills including authentication, REST API design, database relationships, and deployment.
-
-The structure is kept simple and modular so it can be easily extended with additional features.
+| Command | Description |
+|---|---|
+| `npm run dev` | Start both client and server |
+| `npm run client` | Start frontend only |
+| `npm run server` | Start backend only |
+| `npm run install-all` | Install all dependencies |
